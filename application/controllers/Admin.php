@@ -1,5 +1,14 @@
 <?php
-class Admin extends My_Controller{
+class Admin extends My_Controller
+{
+    //create the constructor for session maanagement globally for all the pages and functions 
+    public function __construct(){
+        parent::__construct();
+        if(! $this->session->userdata('id'))
+        return redirect('Admin/Login');
+        // $this->load->model('loginmodel','ar');
+
+    }
 // here replace the index as login function bcoz already this fun is created in users controller
     public function login(){
         // for using form validtaion load the libraray
@@ -42,7 +51,7 @@ class Admin extends My_Controller{
                 // //   logic correct if Data validated true
                 // echo "deatils matched";
                 //now will use session of libraray class
-                $this->load->library('session');
+                // $this->load->library('session');
                 // $_SESSION['Email']=$Email; //used in core php
                 // here we can store and any session data and get wr we want depending on our ids
                 // $this->session->set_userdata('username',$uname); //we can create/set seesion on any form value on which basis we want to show statefullness in our website
@@ -70,6 +79,8 @@ class Admin extends My_Controller{
 
     //create one another function for session 
     public function welcome(){
+        // if(! $this->session->userdata('id'))
+        // return redirect('Admin/Login');
         //now load the model for showing the data from db articlellist
         // $this->load->model('loginmodel');
         //more simpler way to wrte the loginmodel
@@ -86,6 +97,30 @@ class Admin extends My_Controller{
         // $this->load->view('Admin/dashboard');   //welcoming view page will be opened
    //now will pass in this dashboard view loading with our data variable article by creating key
    $this->load->view('Admin/dashboard',['articles'=>$articles]);   //here mentioned first key can be anything
+
+    }
+
+    //Creayte the funtion for add user 
+    public function adduser(){
+        // if(! $this->session->userdata('id'))
+        // return redirect('Admin/Login');
+        // $this->load->model('loginmodel','ar');
+
+    }
+
+    //create fun for edit user
+    public function edituser(){
+        // if(! $this->session->userdata('id'))
+        // return redirect('Admin/Login');
+        // $this->load->model('loginmodel','ar');
+
+    }
+    
+    //for delete
+    public function deluser(){
+        // if(! $this->session->userdata('id'))
+        // return redirect('Admin/Login');
+        // $this->load->model('loginmodel','ar');
 
     }
     //we can create another function for it for not matched
