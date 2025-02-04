@@ -52,3 +52,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'Users';  //this is the name of our controller which will open after opening 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+// $route['login'] = 'admin/login';

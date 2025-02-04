@@ -1,14 +1,7 @@
 <?php
 class Admin extends My_Controller
 {
-    //create the constructor for session maanagement globally for all the pages and functions 
-    public function __construct(){
-        parent::__construct();
-        if(! $this->session->userdata('id'))
-        return redirect('Admin/Login');
-        // $this->load->model('loginmodel','ar');
-
-    }
+    
 // here replace the index as login function bcoz already this fun is created in users controller
     public function login(){
         // for using form validtaion load the libraray
@@ -122,6 +115,22 @@ class Admin extends My_Controller
         // return redirect('Admin/Login');
         // $this->load->model('loginmodel','ar');
 
+    }
+
+    // create the constructor for session maanagement globally for all the pages and functions 
+    public function __construct()
+    {
+        parent::__construct();
+        if( ! $this->session->userdata('id'))
+
+        // if( !$userId= $this->session->userdata('id'))
+        // print_r($userId); die;
+        return redirect('admin/login');
+
+    }
+
+    public function logout(){
+        echo "logout";
     }
     //we can create another function for it for not matched
     public function invaliduser(){

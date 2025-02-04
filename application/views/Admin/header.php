@@ -16,6 +16,22 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+<!-- here will add the logot button and checks of session -->
+ <?php 
+//  if($this->session->userdata('id'))
+if($this->session->userdata('id'))
+
+  {
+    ?>
+    <li> <a href="<?= base_url('admin/logout'); ?>" class="btn btn-danger" style ="">Logout</a></li> 
+     <!-- alternate we can use anchor tag as well -->
+    <?php
+    }
+
+ ?>
+
+
     <!-- <div class="collapse navbar-collapse" id="navbarColor01"> -->
       <!-- <ul class="navbar-nav me-auto">
         <li class="nav-item">
