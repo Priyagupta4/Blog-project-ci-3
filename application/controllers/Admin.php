@@ -41,7 +41,12 @@ class Admin extends My_Controller
                }else{
                 //logic fails data niot matched with db 
                 // echo "deatils  not matched";
-                return redirect('Admin/invaliduser');
+                // return redirect('Admin/invaliduser');
+ 
+                //here will now use flashdata for displaying the userdata without displaying on another screen
+                $this->session->set_flashdata('Login_failed', 'invalid Username or password');
+                return redirect('Admin/login');
+
 
            }
         }

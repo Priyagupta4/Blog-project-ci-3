@@ -25,9 +25,12 @@
 // print_r($_SESSION);die;
   {
     ?>
-    <li> <a href="<?= base_url('admin/logout'); ?>" class="btn btn-danger" style ="">Logout</a></li
-    > 
+    <!-- <li> <a href="<?= base_url('admin/logout'); ?>" class="btn btn-danger" style ="">Logout</a></li
+    >  -->
+
      <!-- alternate we can use anchor tag as well -->
+     <li> <?= anchor('admin/logout', 'Logout', ['class' => 'btn btn-danger']); ?> </li>
+
     <?php
     }
 

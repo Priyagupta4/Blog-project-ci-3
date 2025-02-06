@@ -3,7 +3,20 @@
 <!-- use Container for form centering and n use style for shifing it below   -->
  <div class ="container" style ="margin-top:20px;">
   <!-- for making mor meaning =full give the nmae of form -->
-   <h1> Admin form</h1>
+   <h1> Admin panel🤵</h1>
+
+   <!-- here create flashdata content and pass the key which will be later use in this ui as Login_failed and store this key value into $error varibale  -->
+<?php  if( $error=$this->session->flashdata('Login_failed')) : ?>
+<!-- already in container so class name took row -->
+ <div class ="row">
+  <div class="col-lg-6">
+   <div class="alert alert-danger ">
+<?php  echo $error ;?>
+   </div> 
+  </div>
+ </div>
+  <?php endif; ?>
+
    <!-- <form action="base_url(')"> </form> -->
     <!-- simple form helper tag used to show the form of admin login at that route or controller/methhod calling -admin/index replaced by login -->
     <?php echo form_open('admin/login');?>
