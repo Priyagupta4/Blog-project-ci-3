@@ -19,12 +19,14 @@
 
 <!-- here will add the logot button and checks of session -->
  <?php 
-//  if($this->session->userdata('id'))
-if($this->session->userdata('id'))
+ if($this->session->userdata('id'))
 
+// if($this->session->userdata('id') =1 )
+// print_r($_SESSION);die;
   {
     ?>
-    <li> <a href="<?= base_url('admin/logout'); ?>" class="btn btn-danger" style ="">Logout</a></li> 
+    <li> <a href="<?= base_url('admin/logout'); ?>" class="btn btn-danger" style ="">Logout</a></li
+    > 
      <!-- alternate we can use anchor tag as well -->
     <?php
     }

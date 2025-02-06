@@ -2,32 +2,15 @@
 class Admin extends My_Controller
 {
     
-// here replace the index as login function bcoz already this fun is created in users controller
     public function login(){
-        // for using form validtaion load the libraray
-        // $this->load->library('form_validation');
-        // echo "<h1>Welcome to admin portal </h1> ";
-        // echo "<h2>All Merchant Transcations </h2> ";
-        //self
+       
         $this->form_validation->set_rules('uname', 'User Name','required|alpha');
         $this->form_validation->set_rules('pass','User Password','required|max_length[12]');
         $this->form_validation->set_error_delimiters('<div class="text-danger">','</div>'); //give the danger mark used for all form fieilds
 
         //run function used to run the validationsa n check if true then show validation succesfull
         if($this->form_validation->run()){
-        //    echo "Validation authentication successfully done";
-        // USED CORE PHP TECHNIQUE TO rrecive the php login form data submit ,uname,pass taken from view name attribute
-        // if(isset($_POST['submit']))
-        //  {
-        // $uname= $_POST['uname'];
-        // $pass= $_POST['pass'];
-        // so here ci-3 given input class to recive post data
-        // $uname=$this->input->post('uname');
-        // $pass=$this->input->post('pass');
-        // echo "Username is ".$uname."</br>"."Password is ".$pass;
-        //  }
-        // now will learn how we can intereact with db directly by matching db table by creating model
-        //kept this variable data for read by model isvalidate fun
+       
         $uname=$this->input->post('uname'); //uname n pass taken from ui
         $pass=$this->input->post('pass');
        // $hashed_pass =md5($pass);
@@ -118,20 +101,41 @@ class Admin extends My_Controller
     }
 
     // create the constructor for session maanagement globally for all the pages and functions 
+    // public function __construct()
+    // {
+    //     parent::__construct();
+    //     if( ! $this->session->userdata('id'))
+
+    //     // if( !$userId= $this->session->userdata('id'))
+    //     // print_r($userId); die;
+    //    return  redirect('admin/login');
+
+    // }
+
     public function __construct()
-    {
-        parent::__construct();
-        if( ! $this->session->userdata('id'))
-
-        // if( !$userId= $this->session->userdata('id'))
-        // print_r($userId); die;
+{
+    parent::__construct();
+    
+    // Allow access to the login and register pages without authentication
+    if (! $this->session->userdata('id') && 
+        $this->router->fetch_method() !== 'login' && 
+        $this->router->fetch_method() !== 'register') {
         return redirect('admin/login');
-
     }
+}
 
     public function logout(){
-        echo "logout";
+        // echo "logout";
+        $this->session->unset_userdata('id');
+      return   redirect('admin/login');
     }
+
+    // public function logout(){
+    //     $this->session->unset_userdata('id');  // Unset session ID
+    //     // $this->session->sess_destroy();  // Destroy entire session
+    //     return redirect('admin/login');  // Redirect to login page
+    // }
+    
     //we can create another function for it for not matched
     public function invaliduser(){
         $this->load->view('Admin/invaliduser');     //invalide msg page will  got opened
